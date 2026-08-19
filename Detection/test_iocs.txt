@@ -1,0 +1,5 @@
+Suspicious host: 192.168.116.149
+Destination: 192.168.116.138
+Malware sample hash: 44d88612fea8a8f36de82e1278abb02f
+Reference: https://example.com/malware
+

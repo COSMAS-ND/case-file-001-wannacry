@@ -1,46 +1,69 @@
-# Case File #001 — WannaCry Ransomware Attack
+# WannaCry Ransomware Network Investigation
 
-## Investigation Overview
+## Overview
 
-**Case Type:** Cybersecurity Incident Analysis  
-**Incident:** WannaCry Ransomware Attack  
-**Year:** 2017  
-**Primary Sector Examined:** Healthcare  
-**Focus:** Ransomware, vulnerability exploitation, network propagation, incident response
+This case study documents a network-based investigation into suspicious activity associated with WannaCry ransomware.
 
----
+The investigation focuses on SMB traffic, network behavior, indicators of compromise, MITRE ATT&CK mapping, and Python-based IOC extraction.
 
-## Investigation Objective
+## Objectives
 
-This case study examines the WannaCry ransomware attack to understand how the incident developed, how the malware propagated across vulnerable systems, the impact on healthcare operations, and the security controls that could have reduced the risk.
+- Analyze captured network traffic.
+- Identify suspicious SMB activity.
+- Document relevant network indicators.
+- Map observed behavior to MITRE ATT&CK.
+- Automate IOC extraction with Python.
+- Produce a structured incident report.
 
-The investigation will combine incident research, technical analysis, evidence examination, MITRE ATT&CK mapping, and defensive recommendations.
+## Investigation Highlights
 
----
+### Network Analysis
 
-## Analyst
+The investigation identified:
 
-**Name:** Cosmas Ugwu  
-**Role:** Cybersecurity Analyst — Portfolio Case Study
-## Investigation Questions
+- SMB traffic over TCP port 445.
+- SMBv1 negotiation using `NT LM 0.12`.
+- `IPC$` share activity.
+- `PeekNamedPipe` requests.
+- `STATUS_INSUFF_SERVER_RESOURCES` responses.
+- Host `192.168.116.149` as a key observed system.
 
-1. How did WannaCry gain access to vulnerable systems?
-2. What vulnerability enabled its propagation?
-3. How did the malware spread across networks?
-4. What evidence can be identified from network traffic?
-5. What Indicators of Compromise can be extracted?
-6. Which MITRE ATT&CK techniques are relevant?
-7. Why was the healthcare sector particularly affected?
-8. Which security controls could have reduced the impact?
+### MITRE ATT&CK
 
-## Evidence to Examine
+The investigation mapped relevant behavior to:
 
-- Network traffic
-- Indicators of Compromise
-- Malware-related artifacts
-- Incident timeline
-- Publicly documented technical findings
+- **T1210 — Exploitation of Remote Services**
+- **T1046 — Network Service Scanning**
 
-## Expected Outcome
+### IOC Automation
 
-The investigation will produce a documented technical analysis of the WannaCry incident, supported by evidence and mapped to appropriate defensive recommendations.
+A Python script was developed to extract:
+
+- IP addresses
+- Hashes
+- URLs
+
+The script was tested successfully and then executed against the real network-analysis evidence.
+
+## Tools Used
+
+- Wireshark
+- Ubuntu/Linux
+- Python 3
+- MITRE ATT&CK
+- Git/GitHub
+
+## Repository Structure
+
+```text
+case-file-001-wannacry/
+├── Analysis/
+│   ├── incident-report.md
+│   ├── mitre-attack-mapping.md
+│   └── network-analysis.md
+├── Detection/
+│   ├── ioc_extractor.py
+│   └── test_iocs.txt
+├── Evidence/
+│   └── network-analysis.md
+└── README.md
